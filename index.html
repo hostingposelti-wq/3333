@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Чернобыль Тайкун</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Чернобыль: Тайкун</h1>
+
+    <section class="stats">
+      <div>Рубли: <span id="money">0</span></div>
+      <div>Реактор: <span id="reactorLevel">1</span></div>
+      <div>Рабочие: <span id="workers">0</span></div>
+      <div>Доход/сек: <span id="incomePerSec">0</span></div>
+    </section>
+
+    <section class="actions">
+      <button id="collectBtn">Собрать вручную +1</button>
+      <button id="hireBtn">Нанять рабочего (100)</button>
+      <button id="upgradeBtn">Улучшить реактор (300)</button>
+      <button id="buyShieldBtn">Купить щит (500)</button>
+    </section>
+
+    <section class="log">
+      <strong>События</strong>
+      <ul id="events"></ul>
+    </section>
+
+    <footer>
+      <small>Оффлайн-режим: прогресс сохраняется локально.</small>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+  <script>
+    // Регистрируем service worker (если поддерживается)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{console.log('SW reg failed');});
+    }
+  </script>
+</body>
+</html>
